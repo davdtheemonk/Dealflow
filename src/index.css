@@ -1,27 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&display=swap");
+
 /* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
-
+html,
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 :root {
   --primary: #ca61cf;
   --secondary: #e7abdb;
-
 }
-
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "League Spartan", sans-serif !important;
+}
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
+.text-gradient {
+  color: linear-gradient(268.98deg, var(--primary) 0%, var(--secondary) 95.58%);
+}
 .gradient {
   background: linear-gradient(
     268.98deg,
@@ -29,10 +34,12 @@ code {
     var(--secondary) 95.58%
   );
 }
-
-
+.card {
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+@layer components {
   .layout {
     @apply px-4 sm:px-8 lg:px-20 xl:px-24;
   }
-
-
+}

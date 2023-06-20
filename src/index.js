@@ -1,12 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import Dashboard from './Dashboard';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import Dashboard from "./Dashboard";
+import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
+import { apiSlice } from "./features/apiSlice";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <Dashboard/>
- 
+  <ApiProvider api={apiSlice}>
+    <Dashboard />
+  </ApiProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
