@@ -26,8 +26,9 @@ const rows = [
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
-export default function FreelancersTable() {
+export default function FreelancersTable(props) {
   const [searchTxt, setSeachTxt] = useState("");
+  console.log(props.freelancers);
   const handleSearch = (val) => {
     /*  const url = `https://foti.pythonanywhere.com/foti/students/?search=${val}`;
         axios.get(url, config).then((res) => {
@@ -49,7 +50,7 @@ export default function FreelancersTable() {
         </div>
       </div>
       <DataGrid
-        rows={rows}
+        rows={props.freelancers}
         columns={columns}
         initialState={{
           pagination: {

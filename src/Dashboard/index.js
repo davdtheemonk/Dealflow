@@ -7,7 +7,7 @@ import { useGetFreelancersQuery } from "../features/apiSlice";
 
 export default function Dashboard() {
   const {
-    data: posts,
+    data: freelancers,
     isLoading,
     isSuccess,
     isError,
@@ -20,8 +20,8 @@ export default function Dashboard() {
       ) : (
         <div>
           <Header />
-          <HeroSection />
-          <FreelancersTable />
+          <HeroSection data={freelancers} />
+          <FreelancersTable freelancers={freelancers} />
         </div>
       )}
     </div>

@@ -6,7 +6,7 @@ export const apiSlice = createApi({
   }),
   tagTypes: ["Freelancer"],
   endpoints: (builder) => ({
-    getPosts: builder.query({
+    getFreelancers: builder.query({
       query: () =>
         `/api/cb7ca7f0?count=1000&key=${process.env.REACT_APP_API_KEY}`,
     }),

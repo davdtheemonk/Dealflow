@@ -5,22 +5,28 @@ import {
   BsPersonFillX,
 } from "react-icons/bs";
 import StatCard from "../StatCard";
-export default function HeroSection() {
+export default function HeroSection(props) {
+  const verifiedFreelancers = props.data.filter(function (freelancer) {
+    return freelancer.freelancer_isverified === true;
+  });
+  const unverifiedFreelancers = props.data.filter(function (freelancer) {
+    return freelancer.freelancer_isverified === false;
+  });
   const categories = [
     {
       title: "Freelancers on Dealflow",
       icon: <BsFillPeopleFill className="w-[55px] h-[55px] text-secondary" />,
-      number: 0,
+      number: props.data.length,
     },
     {
       title: "Verified Freelancers on Dealflow",
       icon: <BsPersonFillCheck className="w-[55px] h-[55px] text-secondary" />,
-      number: 0,
+      number: verifiedFreelancers.length,
     },
     {
       title: "Unverified Freelancers on Dealflow",
       icon: <BsPersonFillX className="w-[55px] h-[55px] text-secondary" />,
-      number: 0,
+      number: unverifiedFreelancers.length,
     },
   ];
   return (

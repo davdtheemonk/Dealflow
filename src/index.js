@@ -5,11 +5,15 @@ import reportWebVitals from "./reportWebVitals";
 import Dashboard from "./Dashboard";
 import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
 import { apiSlice } from "./features/apiSlice";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ApiProvider api={apiSlice}>
-    <Dashboard />
-  </ApiProvider>
+  <Provider store={store}>
+    <ApiProvider api={apiSlice}>
+      <Dashboard />
+    </ApiProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
