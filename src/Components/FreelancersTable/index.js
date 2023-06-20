@@ -36,7 +36,7 @@ export default function FreelancersTable(props) {
         });*/
   };
   return (
-    <div className="layout w-full">
+    <div className="layout w-full ">
       <div className="flex flex-col mt-10 justify-start items-start md:justify-between md:items-center md:flex-row  w-full shadow-sm md:px-15 p-5 ">
         <p className="text-3xl font-[500] text-dark">Freelancers List</p>
         <div className="flex flex-row justify-center items-center">
