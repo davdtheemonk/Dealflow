@@ -140,11 +140,9 @@ Before starting the deployment process, ensure you have the following prerequisi
 
    # Install Node.js and npm
 
+   ```
    curl -s https://deb.nodesource.com/setup_16.x | sudo bash
    sudo apt install nodejs -y
-
-   ```
-
    ```
 
 3. **Clone the Repository**
