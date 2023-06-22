@@ -114,6 +114,95 @@ To ensure code quality, readability, and maintainability, I followed these codin
 - I Set up a CI/CD pipeline to automate testing, code linting, and deployment processes.
 - Ensured that code changes are thoroughly tested and deployed efficiently.
 
+# Deployment
+
+## Prerequisites
+
+Before starting the deployment process, ensure you have the following prerequisites:
+
+- An AWS account with appropriate access and permissions to create and manage EC2 instances.
+- An EC2 instance set up and running, with the necessary configuration details such as the instance ID, SSH key pair, and security groups.
+- A domain name or DNS settings configured to point to your app's deployment.
+
+## Deployment Steps
+
+1. **Connect to the EC2 Instance**
+
+   Use SSH to connect to your EC2 instance.
+
+   ```
+   ssh -i <path-to-your-ssh-key> ec2-user@<your-instance-ip>
+   ```
+
+2. **Install Required Software**
+
+   Install Node.js and npm (Node Package Manager) on the EC2 instance.
+
+   # Install Node.js and npm
+
+   curl -s https://deb.nodesource.com/setup_16.x | sudo bash
+   sudo apt install nodejs -y
+
+   ```
+
+   ```
+
+3. **Clone the Repository**
+
+   Clone this project repository onto the EC2 instance.
+
+   ```
+   git clone https://www.github.com/davdtheemonk/dealflow
+   ```
+
+4. **Configure Environment Variables**
+
+   Set up the necessary environment variables required by this application. `API-KEY` and `BASE-URL` are required
+
+   ```
+   cd dealflow
+   cp .env.example .env
+   nano .env
+   ```
+
+5. **Install Dependencies**
+
+   Install the project dependencies using npm or yarn.
+
+   ```
+   npm install
+   ```
+
+6. **Build the Project**
+
+   ```
+   npm run build
+   ```
+
+7. **Start the Application**
+
+   Start the web app using pm2.
+
+   ```
+   pm2 start app.config.json
+   ```
+
+8. **Configure Web Server**
+
+   Set up Nginx to serve the application.
+
+9. **Start the Web Server**
+
+   Start the web server to make this application accessible over the internet.
+
+   ```
+   sudo service nginx start
+   ```
+
+10. **Access the App**
+
+    Access your application using the domain name or public IP address associated with your EC2 instance.
+
 ## Contributing
 
 - Fork the repository and create a new branch for your contributions.
