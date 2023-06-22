@@ -4,7 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 
-export default function StatusPicker() {
+export default function StatusPicker({ setFilter, filter }) {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
@@ -12,10 +12,9 @@ export default function StatusPicker() {
           Freelance status
         </InputLabel>
         <NativeSelect
-          defaultValue={30}
-          inputProps={{
-            name: "age",
-            id: "uncontrolled-native",
+          defaultValue={filter}
+          onChange={(e) => {
+            setFilter(e.target.value);
           }}
         >
           <option value={true}>Verified</option>
