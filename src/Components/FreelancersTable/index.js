@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import SearchBar from "../SearchBar";
 import StatusPicker from "../StatusPicker";
+import InfoIcon from "@mui/icons-material/Info";
+import { Tooltip } from "@mui/material";
 //import axios from 'axios';
 
 const columns = [
@@ -17,20 +19,33 @@ const columns = [
 
 export default function FreelancersTable(props) {
   const [searchTxt, setSeachTxt] = useState("");
-  const handleSearch = (val) => {
-    /*  const url = `https://foti.pythonanywhere.com/foti/students/?search=${val}`;
-        axios.get(url, config).then((res) => {
-          setStudents(res.data);
-        });*/
-  };
+  const [filter, setFilter] = useState(null);
+
+  const [freelancers, setFreelancers] = useState([]);
+
+  useState(() => {
+    setFreelancers(props.freelancers);
+  }, []);
   return (
     <div className="layout w-full ">
       <div className="flex flex-col mt-10 justify-start items-start md:justify-between md:items-center md:flex-row  w-full shadow-sm md:px-15 p-5 ">
-        <p className="text-3xl font-[500] text-dark">Freelancers List</p>
         <div className="flex flex-row justify-center items-center">
-          <StatusPicker />
+          <p className="text-3xl font-[500] text-dark">Freelancers List</p>
+
+          <Tooltip title="Sort or filter the list by hovering over a column name and selecting the menu or filter the list using the freelancer status filter.">
+            <InfoIcon fontSize="sm" className="ml-2" />
+          </Tooltip>
+        </div>
+        <div className="flex flex-row justify-center items-center">
+          <StatusPicker
+            filter={filter}
+            data={freelancers}
+            originalData={props.freelancers}
+            setFreelancers={setFreelancers}
+          />
           <SearchBar
-            handleSearch={handleSearch}
+            setFreelancers={setFreelancers}
+            originalData={props.freelancers}
             setSeachTxt={setSeachTxt}
             placeholder={"Search Freelancer"}
             searchTxt={searchTxt}
@@ -38,7 +53,7 @@ export default function FreelancersTable(props) {
         </div>
       </div>
       <DataGrid
-        rows={props.freelancers}
+        rows={freelancers}
         columns={columns}
         initialState={{
           pagination: {

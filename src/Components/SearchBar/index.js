@@ -1,6 +1,21 @@
 import React from "react";
 
 export default function SearchBar(props) {
+  //function for freelancer search on the firstname colum
+  const handleSearch = (val) => {
+    //Capitalizes the first letter of the search word to improve search performance
+    const searchText = val.charAt(0).toUpperCase() + val.slice(1);
+    if (props.searchTxt === "") {
+      props.setFreelancers(props.originalData);
+    } else {
+      const searchedFreelancer = props.originalData.filter(function (
+        freelancer
+      ) {
+        return freelancer.freelancer_name.includes(searchText) === true;
+      });
+      props.setFreelancers(searchedFreelancer);
+    }
+  };
   return (
     <div className="max-w-sm  ml-2 w-[250px] py-3 flex flex-row justify-center items-center">
       <div className="relative">
@@ -23,31 +38,12 @@ export default function SearchBar(props) {
           value={props.searchTxt}
           onChange={(e) => {
             props.setSeachTxt(e.target.value);
+            handleSearch(e.target.value);
           }}
           placeholder={props.placeholder}
           className="w-full py-3 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600"
         />
       </div>
-      <button
-        className="bg-secondary ml-3 hover:cursor-pointer hover:shadow-xl text-light"
-        style={{
-          width: "40%",
-          height: "40px",
-          borderRadius: "5px",
-          border: "0px",
-          right: "0px",
-          marginTop: "3px",
-          position: "relative",
-          boxShadow: `rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-                      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px`,
-        }}
-        onClick={() => {
-          props.handleSearch(props.searchTxt);
-        }}
-        variant="contained"
-      >
-        Search
-      </button>
     </div>
   );
 }

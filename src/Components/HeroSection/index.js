@@ -6,12 +6,16 @@ import {
 } from "react-icons/bs";
 import StatCard from "../StatCard";
 export default function HeroSection(props) {
+  // filter out unverified freelancers
   const verifiedFreelancers = props.data.filter(function (freelancer) {
     return freelancer.freelancer_isverified === true;
   });
+
+  // filter out verified freelancers
   const unverifiedFreelancers = props.data.filter(function (freelancer) {
     return freelancer.freelancer_isverified === false;
   });
+
   const categories = [
     {
       title: "Freelancers on Dealflow",
