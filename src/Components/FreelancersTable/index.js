@@ -32,19 +32,22 @@ export default function FreelancersTable(props) {
         <div className="flex flex-row justify-center items-center">
           <p className="text-3xl font-[500] text-dark">Freelancers List</p>
 
-          <Tooltip title="Sort or filter the list by hovering over a column name and selecting the menu or filter the list using the freelancer status filter.">
+          <Tooltip title="Hover over a column name and select the menu to access sorting and filtering options or filter the list using the freelancer status filter.">
             <InfoIcon fontSize="sm" className="ml-2" />
           </Tooltip>
         </div>
         <div className="flex flex-row justify-center items-center">
           <StatusPicker
             filter={filter}
+            setFilter={setFilter}
             data={freelancers}
             originalData={props.freelancers}
             setFreelancers={setFreelancers}
           />
           <SearchBar
             setFreelancers={setFreelancers}
+            data={freelancers}
+            filter={filter}
             originalData={props.freelancers}
             setSeachTxt={setSeachTxt}
             placeholder={"Search Freelancer"}

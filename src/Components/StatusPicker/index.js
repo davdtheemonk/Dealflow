@@ -3,9 +3,10 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
-import { useGetFreelancersQuery } from "../../features/apiSlice";
+
 export default function StatusPicker({
   filter,
+  setFilter,
   data,
   setFreelancers,
   originalData,
@@ -20,8 +21,9 @@ export default function StatusPicker({
           Freelancer status
         </InputLabel>
         <NativeSelect
-          defaultValue={true}
+          defaultValue={filter}
           onChange={async (e) => {
+            setFilter(e.target.value);
             if (e.target.value === "true") {
               // Filter out unverified freelancers
               const verifiedFreelancers = originalFreelancers.filter(function (

@@ -16,7 +16,7 @@ The Freelancers Listing Web App is a web application that allows users to browse
 - React: A JavaScript library for building user interfaces.
 - Redux: A predictable state container for managing the application's state.
 - Axios: A JavaScript library for making HTTP requests to fetch data from the mock REST API.
-- HTML/CSS: Used for structuring and styling the web app.
+- Tailwind CSS: Used for structuring and styling the web app.
 - JavaScript ES6: The programming language used for building the app's logic.
 
 ## Installation and Setup

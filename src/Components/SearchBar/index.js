@@ -1,12 +1,25 @@
 import React from "react";
 
 export default function SearchBar(props) {
-  //function for freelancer search on the firstname colum
+  //function for freelancer search active on the firstname column
   const handleSearch = (val) => {
     //Capitalizes the first letter of the search word to improve search performance
     const searchText = val.charAt(0).toUpperCase() + val.slice(1);
     if (props.searchTxt === "") {
       props.setFreelancers(props.originalData);
+    } else if (props.filter === "true" || props.filter === "false") {
+      // Filter out data before searching for freelancers
+      const freelancersStatusFilter = props.originalData.filter(function (
+        freelancer
+      ) {
+        return freelancer.freelancer_isverified === "true" ? true : false;
+      });
+      const searchedFreelancer = freelancersStatusFilter.filter(function (
+        freelancer
+      ) {
+        return freelancer.freelancer_name.includes(searchText) === true;
+      });
+      props.setFreelancers(searchedFreelancer);
     } else {
       const searchedFreelancer = props.originalData.filter(function (
         freelancer
