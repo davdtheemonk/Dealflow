@@ -23,6 +23,8 @@ lib-cov
 coverage
 *.lcov
 
+#vercel 
+.vercel
 # nyc test coverage
 .nyc_output
 
@@ -128,3 +130,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+.vercel
