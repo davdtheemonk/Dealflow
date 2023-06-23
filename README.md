@@ -116,98 +116,42 @@ To ensure code quality, readability, and maintainability, I followed these codin
 
 # Deployment
 
-## Prerequisites
+# Continuous Integration and Deployment (CI/CD) Integration with Vercel and Checkly
 
-Before starting the deployment process, ensure you have the following prerequisites:
+## Overview
 
-- An AWS account with appropriate access and permissions to create and manage EC2 instances.
-- An EC2 instance set up and running, with the necessary configuration details such as the instance ID, SSH key pair, and security groups.
-- A domain name or DNS settings configured to point to your app's deployment.
+In order to ensure the reliability and quality of my application deployments on the Vercel platform, I have integrated a CI/CD pipeline in the repository to automate deployments. I have also included Checkly that seamlessly integrates with Vercel to provide automated monitoring and testing of my deployed applications. With this integration, I can identify and address issues early, guaranteeing that my apps are always deployed without errors.
 
-## Deployment Steps
+## Integration Steps
 
-1. **Connect to the EC2 Instance**
+1. **Logged In to Vercel**
 
-   Use SSH to connect to your EC2 instance.
+   - Logged in to Vercel using Vercel CLI
+   - Used `Vercel link` to generate VERCEL_ORG_ID and VERCEL_PROJECT_ID variables.
+   -
 
-   ```
-   ssh -i <path-to-your-ssh-key> ec2-user@<your-instance-ip>
-   ```
+2. **Connected Checkly to Vercel**
 
-2. **Install Required Software**
+   - From my Vercel project dashboard, I navigated to the build checks section.
+   - Looked for the Checkly integration and click on the Connect button.
+   - Followed the authentication process to connect my Vercel account with Checkly.
 
-   Install Node.js and npm (Node Package Manager) on the EC2 instance.
+3. **Configure Checkly Monitors**
 
-   # Install Node.js and npm
+   - Once the Vercel integration is set up, I navigated to the Checkly dashboard.
+   - Create new monitors or select existing ones to run against my deployed Vercel applications.
+   - Configure the monitors to perform checks or End-to-End (E2E) tests on the relevant URLs or endpoints of my Vercel deployments.
 
-   ```
-   curl -s https://deb.nodesource.com/setup_16.x | sudo bash
-   sudo apt install nodejs -y
-   ```
+4. **Set Up GitHub Actions for VERCEL**
 
-3. **Clone the Repository**
+   - In my GitHub repository, I navigated to the Settings tab.
+   - Added the Vercel variables `VERCEL_TOKEN, VERCEL_ORG_ID, and VERCEL_PROJECT_ID` as secrets to link my github repository to the vercel project.
+   - Created the preview.yaml file in `.github/workflows/preview.yaml`
+   - Configured the workflow file to trigger on events such as push, pull request, or deployment to the main branch.
 
-   Clone this project repository onto the EC2 instance.
+5. **Verification of the Integration**
+   - All checks passed and the successfully deployed to production branch.
+   - Checkly monitors will automatically run against my deployed Vercel application, performing the specified checks and tests.
+   - Monitor results will be available in the Checkly dashboard, allowing me to track the health and performance of my deployments.
 
-   ```
-   git clone https://www.github.com/davdtheemonk/dealflow
-   ```
-
-4. **Configure Environment Variables**
-
-   Set up the necessary environment variables required by this application. `API-KEY` and `BASE-URL` are required
-
-   ```
-   cd dealflow
-   cp .env.example .env
-   nano .env
-   ```
-
-5. **Install Dependencies**
-
-   Install the project dependencies using npm or yarn.
-
-   ```
-   npm install
-   ```
-
-6. **Build the Project**
-
-   ```
-   npm run build
-   ```
-
-7. **Start the Application**
-
-   Start the web app using pm2.
-
-   ```
-   pm2 start app.config.json
-   ```
-
-8. **Configure Web Server**
-
-   Set up Nginx to serve the application.
-
-9. **Start the Web Server**
-
-   Start the web server to make this application accessible over the internet.
-
-   ```
-   sudo service nginx start
-   ```
-
-10. **Access the App**
-
-    Access your application using the domain name or public IP address associated with your EC2 instance.
-
-## Contributing
-
-- Fork the repository and create a new branch for your contributions.
-- Make the necessary changes and submit a pull request to the main repository.
-- Ensure your code follows the project's coding style guidelines.
-- Include relevant documentation and test cases for your changes.
-
-## Credits
-
-Mockaroo - Free Mock API and mock data
+With the integration of Vercel and Checkly in my CI/CD pipeline, I can ensure that my application is continuously monitored and tested, providing confidence in the reliability and quality of my deployments.
