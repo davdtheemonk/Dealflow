@@ -1,4 +1,4 @@
-# Freelancers Listing Web App Documentation
+# Freelancers Listing Web App Documentation -- <a href="https://dealflow-beta.vercel.app/" target=”_blank”>Live Demo</a>
 
 ## Overview
 
@@ -23,9 +23,15 @@ The Freelancers Listing Web App is a web application that allows users to browse
 
 1. Clone the repository from `https://github.com/davdtheemonk/dealflow`.
 2. Set up your env file with the following environment variables `API_KEY` and `BASE_URL` from `https://mockaroo.com`
-3. Install the required dependencies by running the command `npm install`.
-4. Start the development server using `npm start`.
-5. Access the app through the browser at `http://localhost:3000`.
+3. Ensure that your Mock data on Mockaroo follows the following schema `{
+"id": GUID,
+"freelancer_name": FirstName,
+"freelancer_phone": Phone,
+"freelancer_isverified": Boolean
+}`
+4. Install the required dependencies by running the command `npm install`.
+5. Start the development server using `npm start`.
+6. Access the app through the browser at `http://localhost:3000`.
 
 ## Usage
 
@@ -49,7 +55,7 @@ To ensure the app functions correctly and performs optimally, the following test
 
 3. **Incomplete or Inaccurate Freelancer Data**: The data source for the freelancers generates the data,so its not real and its may also be inconsistent since the data is regenerated for each refresh request on the app and API.
 
-4. **Security Concerns**: The web app has no appropriate security measures in place to protect user data and prevent unauthorized access. The web does not address any potential vulnerabilities that may be caused by not implementing secure authentication and authorization mechanisms.
+4. **Security Concerns**: The web app has no appropriate security measures in place to protect user data and prevent unauthorized access. The web app does not address any potential vulnerabilities that may be caused by not implementing secure authentication and authorization mechanisms.
 
 ## Future Enhancements
 
@@ -98,12 +104,12 @@ To ensure code quality, readability, and maintainability, I followed these codin
 ### Error Handling and Validation
 
 - Implement proper error handling and validation mechanisms.
-- Handle unexpected scenarios gracefully and validate user inputs on both the client and server sides.
+- Handle unexpected scenarios such as errors while fetching remote data from Mockaroo.
 
 ### Performance Optimization
 
 - Optimize code and algorithms for improved performance.
-- Minimize unnecessary operations, reduce network requests, and implement caching strategies where applicable.
+- Minimize unnecessary operations to reduce network requests
 
 ### Documentation and Issue Tracking
 
@@ -111,8 +117,12 @@ To ensure code quality, readability, and maintainability, I followed these codin
 
 ### Continuous Integration and Deployment
 
-- I Set up a CI/CD pipeline to automate testing, code linting, and deployment processes.
+- I Set up a CI/CD pipeline to automate the deployment processes.
 - Ensured that code changes are thoroughly tested and deployed efficiently.
+
+## Potential Bugs
+
+- The search feature may not work concurrently with filtering options.
 
 # Deployment
 
@@ -128,7 +138,7 @@ In order to ensure the reliability and quality of my application deployments on 
 
    - Logged in to Vercel using Vercel CLI
    - Used `Vercel link` to generate VERCEL_ORG_ID and VERCEL_PROJECT_ID variables.
-   -
+   - Created a token from Vercel for authentication.
 
 2. **Connected Checkly to Vercel**
 
