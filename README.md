@@ -150,7 +150,7 @@ In order to ensure the reliability and quality of my application deployments on 
 
    - Once the Vercel integration is set up, I navigated to the Checkly dashboard.
    - Create new monitors or select existing ones to run against my deployed Vercel applications.
-   - Configure the monitors to perform checks or End-to-End (E2E) tests on the relevant URLs or endpoints of my Vercel deployments.
+   - Configured the monitors to perform checks or End-to-End (E2E) tests on the relevant URLs or endpoints of my Vercel deployments.
 
 4. **Set Up GitHub Actions for VERCEL**
 
@@ -158,6 +158,7 @@ In order to ensure the reliability and quality of my application deployments on 
    - Added the Vercel variables `VERCEL_TOKEN, VERCEL_ORG_ID, and VERCEL_PROJECT_ID` as secrets to link my github repository to the vercel project.
    - Created the preview.yaml file in `.github/workflows/preview.yaml`
    - Configured the workflow file to trigger on events such as push, pull request, or deployment to the main branch.
+   - After successful deployment on vercel I added the environment variables, `API_KEY` and `BASE_URL` from `https://mockaroo.com`.
 
 5. **Verification of the Integration**
    - All checks passed and the successfully deployed to production branch.
