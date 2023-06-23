@@ -161,7 +161,7 @@ In order to ensure the reliability and quality of my application deployments on 
    - After successful deployment on vercel I added the environment variables, `API_KEY` and `BASE_URL` from `https://mockaroo.com`.
 
 5. **Verification of the Integration**
-   - All checks passed and the successfully deployed to production branch.
+   - All checks passed and successfully deployed to production branch.
    - Checkly monitors will automatically run against my deployed Vercel application, performing the specified checks and tests.
    - Monitor results will be available in the Checkly dashboard, allowing me to track the health and performance of my deployments.
 
