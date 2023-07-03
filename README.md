@@ -6,8 +6,8 @@ The Freelancers Listing Web App is a web application that allows users to browse
 
 ## Features
 
-1. **Freelancer Listing**: Displays a list of freelancers available with Dealflow, showcasing their relevant details and skills.
-2. **Search Filtering**: Allows users to search for specific freelancers based on their name, skills, or any other relevant criteria.
+1. **Freelancer Listing**: Displays a list of freelancers available with Dealflow, showcasing their relevant details.
+2. **Search Filtering**: Allows users to search for specific freelancers based on their name.
 3. **Pagination**: Enables users to navigate through the list of freelancers using pagination controls, such as previous and next buttons.
 4. **Mock REST API**: Fetches freelancer data from a mock REST API endpoint to simulate real-world data retrieval.
 
